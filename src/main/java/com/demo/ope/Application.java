@@ -11,7 +11,7 @@ class Application {
             String arg = args[0];
 
             if (args[0].equalsIgnoreCase("help") || args[0].equalsIgnoreCase("h") || args[0].equals("?")) {
-                System.out.println("Please refer to readme file");
+                showHelp();
             } else {
 
                 //Create obj of CustomerSorter and initialize using latitude and longitude of dublin office
@@ -30,7 +30,7 @@ class Application {
                         System.out.println(customer.getUserID() + "\t\t | \t" + customer.getName());
                     }
                 } else {
-                    System.out.println("Could not get list of customers");
+                    System.out.println("Unable to get list of customers");
                 }
             }
         } catch (ArrayIndexOutOfBoundsException ae) {
@@ -39,4 +39,15 @@ class Application {
             System.out.println("Invalid input detected");
         }
     }
+
+
+    public static void showHelp() {
+        System.out.println("\n****\nUsage :" + "\n$ gradle installDist");
+        System.out.println("\n$ cd build/install/IntercomCustomerSorter/bin"
+                + "\n$ ./IntercomCustomerSorter pathOrUrlToEncodedJSON");
+
+        System.out.println("\nPlease refer to readme file for more information\n****\n");
+    }
 }
+
+

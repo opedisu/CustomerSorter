@@ -1,5 +1,6 @@
 package com.demo.ope;
 
+
 import com.google.gson.Gson;
 
 import java.io.*;
@@ -44,18 +45,18 @@ public class CustomerSorter {
         return true;
     }
 
-    public double calculateDistanceUsingLatitudeLongitude(double la2, double lo2) {
+    public double calculateDistanceUsingLatitudeLongitude(double latitude,
+                                                          double longitude) {
 
         double centralAngle =
                 Math.acos(Math.sin(Math.toRadians(la1))
-                        * Math.sin(Math.toRadians(la2))
+                        * Math.sin(Math.toRadians(latitude))
                         + Math.cos(Math.toRadians(la1))
-                        * Math.cos(Math.toRadians(la2))
-                        * Math.cos(Math.toRadians(lo1 - lo2)));
+                        * Math.cos(Math.toRadians(latitude))
+                        * Math.cos(Math.toRadians(lo1 - longitude)));
 
-        int radiusOfEarth = 6371;
 
-        return radiusOfEarth * centralAngle;
+        return Constants.RADIUS_OF_THE_EARTH * centralAngle;
     }
 
     public List<CustomerRecord> getCustomerRecordsAsList() {
